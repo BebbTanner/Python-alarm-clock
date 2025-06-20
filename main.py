@@ -6,8 +6,7 @@ I will be starting by just practicing with the documentation examples provided.
 CURRENT OBJECTIVES:
 Program and test the update time funciton       FINISHED
 Create a label that can hold that the updateTime function and display it on the GUI
-Figure out how the StringVar() tkinter function works.
-Create a function that will allow you to set an alarm.
+Create a function that will allow you to set an alarm.      FINISHED
 Create a function that will check the alarm time with the current time.
 Create a function that will display a pop up that alarm is finish.
 """
@@ -23,10 +22,15 @@ and store it in the update_time variable. Using time.sleep(), it waits for one s
 In theory this should update the time every minute. The format is: HH:MM.
 """
 def updateTime():
+
+    clock = datetime.now().strftime("%H:%M:%S")
+
+    #clock = float(current_time.get())
+
     while True:
-        update_time = datetime.now().strftime("%H:%M")
-        time.sleep(60)
-        print(update_time)
+        displayTime = datetime.now().strftime("%H:%M:%S")
+        time.sleep(1)
+        clock.set(displayTime)
 
 
 """
@@ -47,7 +51,6 @@ def setAlarm(*args):
 The format is: HH:MM. The datetime.now() funciton is getting the current date and time.
 The strftime() is parsing the hour and minute data. This is the only data that I want.
 """
-current_time = datetime.now().strftime("%H:%M:%S")
 
 """
     I am unsure what this does right now.
@@ -75,6 +78,8 @@ alarm_entry.grid(column=2, row=1, sticky=(W, E))
 
 currentAlarm = StringVar()
 
+displayTime = StringVar()
+
 """
     This is a tkinter button that will eventually be linked to a function that will
 allow the user to set an alarm.
@@ -84,18 +89,12 @@ ttk.Button(mainframe, text="Set Alarm", command=setAlarm).grid(column=3, row=1, 
 """
     These are labels that are displayed on the GUI.
 The first one displays text that says what time 
-The second one displays tex that says current time.
-The Third one displays the value stored in the current time variable.
-The fourth one displays text that says CST.
-The fifth one displays text that says alarm set for.
-The 6th label will display the value that user inputed.
+The second one displays tex that says alarm set for.
+The Third one displays the value stored in the curretAlarm variable.
 """
 ttk.Label(mainframe, text="What time?").grid(column=1, row=1, sticky=W)
-ttk.Label(mainframe, text=" Current time: ").grid(column=1, row=2, sticky=E)
-ttk.Label(mainframe, text=current_time).grid(column=2, row=2, sticky=E)
-ttk.Label(mainframe, text= " CST ").grid(column=3, row=2, sticky=E)
-ttk.Label(mainframe, text= " Alarm set for: ").grid(column=1, row=3, sticky=E)
-ttk.Label(mainframe, textvariable=currentAlarm).grid(column=2, row=3, sticky=E)
+ttk.Label(mainframe, text= " Alarm set for: ").grid(column=1, row=2, sticky=E)
+ttk.Label(mainframe, textvariable=currentAlarm).grid(column=2, row=2, sticky=E)
 
 """
     This is a for loop that is checking for every child class in the mainframe.
@@ -111,7 +110,7 @@ for child in mainframe.winfo_children():
 code from above.
 """
 alarm_entry.focus()
-root.bind("<Return>", setAlarm)
+#root.bind("<Return>", setAlarm)
 root.mainloop()
 
 """
