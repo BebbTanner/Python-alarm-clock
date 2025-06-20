@@ -7,6 +7,9 @@ CURRENT OBJECTIVES:
 Program and test the update time funciton
 Create a label that can hold that the updateTime function and display it on the GUI
 Figure out how the StringVar() tkinter function works.
+Create a function that will allow you to set an alarm.
+Create a function that will check the alarm time with the current time.
+Create a function that will display a pop up that alarm is finish.
 """
 
 import time
