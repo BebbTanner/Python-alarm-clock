@@ -26,13 +26,14 @@ def updateTime():
     while True:
         update_time = datetime.now().strftime("%H:%M")
         time.sleep(60)
+        print(update_time)
 
 """
     This is the current time variable that will hold the current time on the machine. 
 The format is: HH:MM. The datetime.now() funciton is getting the current date and time.
 The strftime() is parsing the hour and minute data. This is the only data that I want.
 """
-current_time = datetime.now().strftime("%H:%M")
+current_time = datetime.now().strftime("%H:%M:%S")
 
 """
 
@@ -89,4 +90,11 @@ for child in mainframe.winfo_children():
     This is just calling the mainloop function that will run all of the related 
 code from above.
 """
-root.mainloop()
+#root.mainloop()
+
+"""
+    This is just here to test my update time funciton. I will leave it in
+just in case I need it for later.
+"""
+#print(current_time)
+#updateTime()
