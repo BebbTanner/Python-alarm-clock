@@ -4,8 +4,8 @@ Alarm clock mini project June 19th 2025 10:44
 I will be starting by just practicing with the documentation examples provided.
 
 CURRENT OBJECTIVES:
-Program and test the update time funciton       FINISHED
-Create a label that can hold that the updateTime function and display it on the GUI
+Program and test the update time funciton.
+Create a label that can hold that the updateTime function and display it on the GUI.
 Create a function that will allow you to set an alarm.      FINISHED
 Create a function that will check the alarm time with the current time.
 Create a function that will display a pop up that alarm is finish.
@@ -31,6 +31,7 @@ def updateTime():
         displayTime = datetime.now().strftime("%H:%M:%S")
         time.sleep(1)
         clock.set(displayTime)
+        print(displayTime)
 
 
 """
@@ -110,12 +111,10 @@ for child in mainframe.winfo_children():
 code from above.
 """
 alarm_entry.focus()
-#root.bind("<Return>", setAlarm)
 root.mainloop()
 
 """
     This is just here to test my update time funciton. I will leave it in
 just in case I need it for later.
 """
-#print(current_time)
 #updateTime()
