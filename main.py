@@ -9,6 +9,11 @@ from tkinter import *
 from tkinter import ttk
 from datetime import datetime
 
+def updateTime():
+    while True:
+        current_time = datetime.now().strftime("%H:%M")
+        time.sleep(1)
+
 current_time = datetime.now().strftime("%H:%M")
 
 root = Tk()
