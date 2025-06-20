@@ -30,11 +30,14 @@ def updateTime():
 
 
 """
-    This is the setAlarm function.
+    This is the setAlarm function. This should be taking whatever value the user enters 
+and storing it in the alarmTime variable. I want to display this on a label in the mainframe
+window.
 """
 def setAlarm(*args):
     try:
         alarmTime = float(alarm.get())
+        currentAlarm.set(int(alarmTime))
         
     except ValueError:
         pass
@@ -47,7 +50,7 @@ The strftime() is parsing the hour and minute data. This is the only data that I
 current_time = datetime.now().strftime("%H:%M:%S")
 
 """
-
+    I am unsure what this does right now.
 """
 root = Tk()
 root.title("Alarm Clock")
@@ -70,6 +73,8 @@ alarm = StringVar()
 alarm_entry = ttk.Entry(mainframe, width=7, textvariable=alarm)
 alarm_entry.grid(column=2, row=1, sticky=(W, E))
 
+currentAlarm = StringVar()
+
 """
     This is a tkinter button that will eventually be linked to a function that will
 allow the user to set an alarm.
@@ -83,12 +88,14 @@ The second one displays tex that says current time.
 The Third one displays the value stored in the current time variable.
 The fourth one displays text that says CST.
 The fifth one displays text that says alarm set for.
+The 6th label will display the value that user inputed.
 """
 ttk.Label(mainframe, text="What time?").grid(column=1, row=1, sticky=W)
 ttk.Label(mainframe, text=" Current time: ").grid(column=1, row=2, sticky=E)
 ttk.Label(mainframe, text=current_time).grid(column=2, row=2, sticky=E)
 ttk.Label(mainframe, text= " CST ").grid(column=3, row=2, sticky=E)
 ttk.Label(mainframe, text= " Alarm set for: ").grid(column=1, row=3, sticky=E)
+ttk.Label(mainframe, textvariable=currentAlarm).grid(column=2, row=3, sticky=E)
 
 """
     This is a for loop that is checking for every child class in the mainframe.
