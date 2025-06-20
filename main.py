@@ -9,8 +9,7 @@ from tkinter import *
 from tkinter import ttk
 from datetime import datetime
 
-
-current_time = datetime.now().strftime("%H:%M:%S")
+current_time = datetime.now().strftime("%H:%M")
 
 root = Tk()
 root.title("Alarm Clock")
@@ -20,9 +19,9 @@ mainframe.grid(column=0, row=0, sticky=(N, W, E, S))
 root.columnconfigure(0, weight=1)
 root.rowconfigure(0, weight=1)
 
-feet = StringVar()
-feet_entry = ttk.Entry(mainframe, width=7, textvariable=feet)
-feet_entry.grid(column=2, row=1, sticky=(W, E))
+alarm = StringVar()
+alarm_entry = ttk.Entry(mainframe, width=7, textvariable=alarm)
+alarm_entry.grid(column=2, row=1, sticky=(W, E))
 
 ttk.Button(mainframe, text="Set Alarm").grid(column=3, row=1, sticky=W)
 ttk.Label(mainframe, text="What time?").grid(column=1, row=1, sticky=W)
@@ -32,6 +31,6 @@ ttk.Label(mainframe, text=current_time).grid(column=2, row=2, sticky=E)
 ttk.Label(mainframe, text= " CST ").grid(column=3, row=2, sticky=E)
 
 for child in mainframe.winfo_children(): 
-    child.grid_configure(padx=10, pady=5)
+    child.grid_configure(padx=10, pady=10)
 
 root.mainloop()
