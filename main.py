@@ -7,6 +7,12 @@ from tkinter import *
 from tkinter import ttk
 from datetime import datetime
 
+def update_time():
+    """Updates the time displayed in the label and reschedules itself."""
+    current_time = datetime.now().strftime("%H:%M:%S")
+    time_var.set(current_time)
+    root.after(1000, update_time)  # Schedule the function to run again after 1 minute
+
 def setAlarm(*args):
     try:
         alarmTime = float(alarm.get())
