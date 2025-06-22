@@ -34,6 +34,10 @@ alarm_entry = ttk.Entry(mainframe, width=7, textvariable=alarm)
 alarm_entry.grid(column=2, row=1, sticky=(W, E))
 currentAlarm = StringVar()
 
+# Create a StringVar to hold the label's text
+time_var = StringVar()
+
+
 ttk.Label(mainframe, text="What time?").grid(column=1, row=1, sticky=W)
 ttk.Label(mainframe, text= " Alarm set for: ").grid(column=1, row=2, sticky=E)
 ttk.Label(mainframe, text= " Current time: ").grid(column=1, row=3, sticky=E)
@@ -41,6 +45,8 @@ ttk.Label(mainframe, textvariable=currentAlarm).grid(column=2, row=2, sticky=E)
 time_label = ttk.Label(mainframe, textvariable=time_var).grid(column=2, row=3, sticky=E)
 ttk.Button(mainframe, text="Set Alarm", command=setAlarm).grid(column=3, row=1, sticky=W)
 ttk.Label(mainframe, text= " CST ").grid(column=3, row=3, sticky=E)
+
+update_time()
 
 for child in mainframe.winfo_children(): 
     child.grid_configure(padx=10, pady=10)
