@@ -9,8 +9,6 @@ from datetime import datetime
 
 def updateTime(*args):
 
-    #clock = datetime.now().strftime("%H:%M:%S")
-
     while True:
         displayTime = datetime.now().strftime("%H:%M:%S")
         time.sleep(1)
