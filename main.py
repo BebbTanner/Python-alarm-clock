@@ -21,17 +21,19 @@ from datetime import datetime
 and store it in the update_time variable. Using time.sleep(), it waits for one second to run the loop again. 
 In theory this should update the time every minute. The format is: HH:MM.
 """
-def updateTime():
+def updateTime(*args):
 
-    clock = datetime.now().strftime("%H:%M:%S")
+    #clock = datetime.now().strftime("%H:%M:%S")
 
     #clock = float(current_time.get())
-
-    while True:
-        displayTime = datetime.now().strftime("%H:%M:%S")
-        time.sleep(1)
-        clock.set(displayTime)
-        print(displayTime)
+    try:
+        while True:
+            displayTime = datetime.now().strftime("%H:%M:%S")
+            time.sleep(1)
+            clock.set(displayTime)
+            print(displayTime)
+    except ValueError:
+        pass
 
 
 """
@@ -76,10 +78,9 @@ This one should currently be the master stringvar since it has no parameters.
 alarm = StringVar()
 alarm_entry = ttk.Entry(mainframe, width=7, textvariable=alarm)
 alarm_entry.grid(column=2, row=1, sticky=(W, E))
-
 currentAlarm = StringVar()
 
-displayTime = StringVar()
+clock = StringVar()
 
 """
     This is a tkinter button that will eventually be linked to a function that will
@@ -110,11 +111,11 @@ for child in mainframe.winfo_children():
     This is just calling the mainloop function that will run all of the related 
 code from above.
 """
-alarm_entry.focus()
-root.mainloop()
+#alarm_entry.focus()
+#root.mainloop()
 
 """
     This is just here to test my update time funciton. I will leave it in
 just in case I need it for later.
 """
-#updateTime()
+updateTime()
