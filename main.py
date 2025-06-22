@@ -9,9 +9,9 @@ from datetime import datetime
 
 def update_time():
     """Updates the time displayed in the label and reschedules itself."""
-    current_time = datetime.now().strftime("%H:%M:%S")
+    current_time = datetime.now().strftime("%H:%M")
     time_var.set(current_time)
-    root.after(1000, update_time)  # Schedule the function to run again after 1 minute
+    root.after(60000, update_time)  # Schedule the function to run again after 1 minute
 
 def setAlarm(*args):
     try:
@@ -37,7 +37,6 @@ currentAlarm = StringVar()
 # Create a StringVar to hold the label's text
 time_var = StringVar()
 
-
 ttk.Label(mainframe, text="What time?").grid(column=1, row=1, sticky=W)
 ttk.Label(mainframe, text= " Alarm set for: ").grid(column=1, row=2, sticky=E)
 ttk.Label(mainframe, text= " Current time: ").grid(column=1, row=3, sticky=E)
@@ -45,6 +44,7 @@ ttk.Label(mainframe, textvariable=currentAlarm).grid(column=2, row=2, sticky=E)
 time_label = ttk.Label(mainframe, textvariable=time_var).grid(column=2, row=3, sticky=E)
 ttk.Button(mainframe, text="Set Alarm", command=setAlarm).grid(column=3, row=1, sticky=W)
 ttk.Label(mainframe, text= " CST ").grid(column=3, row=3, sticky=E)
+
 
 update_time()
 
