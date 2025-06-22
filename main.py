@@ -14,13 +14,6 @@ from tkinter import *
 from tkinter import ttk
 from datetime import datetime
 
-"""
-    My current_time variable is stored as a string data type, and my alarmTime is stored as an integer.
-These are going to need to be the same data type in order to compare them.
-"""
-#def checkAlarm():
-
-
 def update_time():
     """Updates the time displayed in the label and reschedules itself."""
     current_time = datetime.now().strftime("%H:%M")
@@ -34,6 +27,31 @@ def setAlarm(*args):
         
     except ValueError:
         pass
+
+def popUpWindow():
+    # Create a new Toplevel window, parented to 'root'
+    new_window = Toplevel(root)
+    new_window.title("New Popup Window")
+    new_window.geometry("300x200")
+
+    label = ttk.Label(new_window, text="This is a new window!")
+    label.pack(pady=20)
+
+    close_button = ttk.Button(new_window, text="Close", command=new_window.destroy)
+    close_button.pack(pady=10)
+
+"""
+    the currentAlarm and currentTime variables are now both stored as string variables. So they can now both
+be comapred to each other...in theory.
+
+if currentAlarm == currentTime{
+    display pop up window.
+}
+"""
+def checkAlarm():
+    if currentAlarm == time_var:
+        popUpWindow()
+
 
 root = Tk()
 root.title("Alarm Clock")
@@ -56,7 +74,6 @@ ttk.Label(mainframe, textvariable=currentAlarm).grid(column=2, row=2, sticky=E)
 time_label = ttk.Label(mainframe, textvariable=time_var).grid(column=2, row=3, sticky=E)
 ttk.Button(mainframe, text="Set Alarm", command=setAlarm).grid(column=3, row=1, sticky=W)
 ttk.Label(mainframe, text= " CST ").grid(column=3, row=3, sticky=E)
-
 
 update_time()
 
