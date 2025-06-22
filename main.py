@@ -29,9 +29,8 @@ def setAlarm(*args):
         pass
 
 def popUpWindow():
-    # Create a new Toplevel window, parented to 'root'
     new_window = Toplevel(root)
-    new_window.title("New Popup Window")
+    new_window.title("Alarm finished")
     new_window.geometry("300x200")
 
     label = ttk.Label(new_window, text="This is a new window!")
@@ -49,7 +48,7 @@ if currentAlarm == currentTime{
 }
 """
 def checkAlarm():
-    if currentAlarm == time_var:
+    if {currentAlarm} == {time_var}:
         popUpWindow()
 
 
@@ -71,13 +70,13 @@ ttk.Label(mainframe, text= " Alarm set for: ").grid(column=1, row=2, sticky=E)
 ttk.Label(mainframe, text= " Current time: ").grid(column=1, row=3, sticky=E)
 alarm_entry.grid(column=2, row=1, sticky=(W, E))
 ttk.Label(mainframe, textvariable=currentAlarm).grid(column=2, row=2, sticky=E)
-time_label = ttk.Label(mainframe, textvariable=time_var).grid(column=2, row=3, sticky=E)
+ttk.Label(mainframe, textvariable=time_var).grid(column=2, row=3, sticky=E)
 ttk.Button(mainframe, text="Set Alarm", command=setAlarm).grid(column=3, row=1, sticky=W)
 ttk.Label(mainframe, text= " CST ").grid(column=3, row=3, sticky=E)
 
 for child in mainframe.winfo_children(): 
     child.grid_configure(padx=10, pady=10)
-    
+
 update_time()
 
 root.mainloop()
