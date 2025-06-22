@@ -14,6 +14,9 @@ from tkinter import *
 from tkinter import ttk
 from datetime import datetime
 
+def checkAlarm():
+    
+
 def update_time():
     """Updates the time displayed in the label and reschedules itself."""
     current_time = datetime.now().strftime("%H:%M")
