@@ -15,13 +15,13 @@ from tkinter import ttk
 from datetime import datetime
 
 def checkAlarm():
-    
+
 
 def update_time():
     """Updates the time displayed in the label and reschedules itself."""
     current_time = datetime.now().strftime("%H:%M")
     time_var.set(current_time)
-    root.after(60000, update_time)  # Schedule the function to run again after 1 minute
+    root.after(60000, update_time)
 
 def setAlarm(*args):
     try:
@@ -44,7 +44,6 @@ alarm_entry = ttk.Entry(mainframe, width=7, textvariable=alarm)
 alarm_entry.grid(column=2, row=1, sticky=(W, E))
 currentAlarm = StringVar()
 
-# Create a StringVar to hold the label's text
 time_var = StringVar()
 
 ttk.Label(mainframe, text="What time?").grid(column=1, row=1, sticky=W)
