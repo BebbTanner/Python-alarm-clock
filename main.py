@@ -75,9 +75,9 @@ time_label = ttk.Label(mainframe, textvariable=time_var).grid(column=2, row=3, s
 ttk.Button(mainframe, text="Set Alarm", command=setAlarm).grid(column=3, row=1, sticky=W)
 ttk.Label(mainframe, text= " CST ").grid(column=3, row=3, sticky=E)
 
-update_time()
-
 for child in mainframe.winfo_children(): 
     child.grid_configure(padx=10, pady=10)
+    
+update_time()
 
 root.mainloop()
