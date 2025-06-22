@@ -4,9 +4,7 @@ Alarm clock mini project June 19th 2025 10:44
 I will be starting by just practicing with the documentation examples provided.
 
 CURRENT OBJECTIVES:
-Program and test the update time funciton.
 Create a label that can hold that the updateTime function and display it on the GUI.
-Create a function that will allow you to set an alarm.      FINISHED
 Create a function that will check the alarm time with the current time.
 Create a function that will display a pop up that alarm is finish.
 """
@@ -22,19 +20,11 @@ and store it in the update_time variable. Using time.sleep(), it waits for one s
 In theory this should update the time every minute. The format is: HH:MM.
 """
 def updateTime(*args):
-
-    #clock = datetime.now().strftime("%H:%M:%S")
-
-    #clock = float(current_time.get())
-    try:
+        
         while True:
             displayTime = datetime.now().strftime("%H:%M:%S")
             time.sleep(1)
             clock.set(displayTime)
-            print(displayTime)
-    except ValueError:
-        pass
-
 
 """
     This is the setAlarm function. This should be taking whatever value the user enters 
