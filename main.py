@@ -20,6 +20,8 @@ def update_time():
     time_var.set(current_time)
     root.after(60000, update_time)
 
+    return time_var
+
 def setAlarm(*args):
     try:
         alarmTime = alarm.get()
@@ -38,19 +40,6 @@ def popUpWindow():
 
     close_button = ttk.Button(new_window, text="Close", command=new_window.destroy)
     close_button.pack(pady=10)
-
-"""
-    the currentAlarm and currentTime variables are now both stored as string variables. So they can now both
-be comapred to each other...in theory.
-
-if currentAlarm == currentTime{
-    display pop up window.
-}
-"""
-def checkAlarm():
-    if {currentAlarm} == {time_var}:
-        popUpWindow()
-
 
 root = Tk()
 root.title("Alarm Clock")
