@@ -32,14 +32,33 @@ def setAlarm(*args):
 
 def popUpWindow():
     new_window = Toplevel(root)
-    new_window.title("Alarm finished")
+    new_window.title("Alert")
     new_window.geometry("300x200")
 
-    label = ttk.Label(new_window, text="This is a new window!")
+    label = ttk.Label(new_window, text="Time is up!")
     label.pack(pady=20)
 
     close_button = ttk.Button(new_window, text="Close", command=new_window.destroy)
     close_button.pack(pady=10)
+
+"""
+The 2 comparsion values are:
+time_var        current_alarm
+
+1.) Remove the colons from both of the values
+2.) Comapare the 2 values
+"""
+def alarmClock():
+    clockValue = currentAlarm.get()
+    timeValue = time_var.get()
+
+    strAlarm = clockValue.replace(":", "")
+    strValue = timeValue.replace(":", "")
+
+    if strAlarm == strValue:
+        new_window = Toplevel(root)
+        new_window.title("Alert")
+        new_window.geometry("300x200")
 
 root = Tk()
 root.title("Alarm Clock")
@@ -70,20 +89,28 @@ for child in mainframe.winfo_children():
     I am currently attempting to take a stringvar and convert it to a int value.
 I a doing this so that I can create a function that will compare the user's alarm time
 to the current time so that I may display a popup when the alarm is finished.
+
+    Ok, so it appears that it is making the comparison of the variables correctly, but it 
+is not displalying the popup window. So I believe that the next issue that I need to work on
+is fixing the pop up window.
+
+I am not sure if I am going to make it a seperate function then call it in the alarmclock function.
+Or just program directly into the alarmclock function.
 """
-#root.mainloop()
+#userAlarm = input("Please enter a time: ")
+#alarmNoColon = userAlarm.replace(":", "")
 
-userAlarm = input("Please enter a time: ")
-alarmNoColon = userAlarm.replace(":", "")
+#print(alarmNoColon)
+#print(type(alarmNoColon))
 
-print(alarmNoColon)
-print(type(alarmNoColon))
+#myTimeVar = "15:00"
+#noColon = myTimeVar.replace(":", "")
 
-myTimeVar = "15:00"
-noColon = myTimeVar.replace(":", "")
+#print(noColon)
+#print(type(noColon))
 
-print(noColon)
-print(type(noColon))
+#if alarmNoColon == noColon:
+#    print("The values are the same.")
 
-if alarmNoColon == noColon:
-    print("The values are the same.")
+update_time()
+root.mainloop()
