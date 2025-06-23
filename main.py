@@ -66,6 +66,15 @@ ttk.Label(mainframe, text= " CST ").grid(column=3, row=3, sticky=E)
 for child in mainframe.winfo_children(): 
     child.grid_configure(padx=10, pady=10)
 
+"""
+    I am currently attempting to take a stringvar and convert it to a int value.
+I a doing this so that I can create a function that will compare the user's alarm time
+to the current time so that I may display a popup when the alarm is finished.
+"""
 update_time()
+myTimeVar = time_var.get()
+noColon = myTimeVar.replace(":", "")
+intValue = int(float(noColon))
 
-root.mainloop()
+print(intValue)
+print(type(intValue))
