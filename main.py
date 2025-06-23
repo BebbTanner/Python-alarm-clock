@@ -71,10 +71,19 @@ for child in mainframe.winfo_children():
 I a doing this so that I can create a function that will compare the user's alarm time
 to the current time so that I may display a popup when the alarm is finished.
 """
-update_time()
-myTimeVar = time_var.get()
-noColon = myTimeVar.replace(":", "")
-intValue = int(float(noColon))
+#root.mainloop()
 
-print(intValue)
-print(type(intValue))
+userAlarm = input("Please enter a time: ")
+alarmNoColon = userAlarm.replace(":", "")
+
+print(alarmNoColon)
+print(type(alarmNoColon))
+
+myTimeVar = "15:00"
+noColon = myTimeVar.replace(":", "")
+
+print(noColon)
+print(type(noColon))
+
+if alarmNoColon == noColon:
+    print("The values are the same.")
