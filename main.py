@@ -11,6 +11,12 @@ from tkinter import *
 from tkinter import ttk
 from datetime import datetime
 
+"""
+    This is the current function that I am working on. 
+"""
+def alertWindow():
+
+
 def update_time():
     current_time = datetime.now().strftime("%H:%M")
     time_var.set(current_time)
