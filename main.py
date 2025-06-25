@@ -28,6 +28,17 @@ def setAlarm(*args):
     except ValueError:
         pass
 
+def compareTime():
+    newAlarm = alarm.get()
+    alarmNoColon = newAlarm.replace(":", "")
+
+    myTimeVar = time_var.get()
+    noColon = myTimeVar.replace(":", "")
+
+    if alarmNoColon == noColon:
+        print("The values are the same.")
+
+
 root = Tk()
 root.title("Alarm Clock")
 
@@ -54,36 +65,12 @@ for child in mainframe.winfo_children():
     child.grid_configure(padx=10, pady=10)
 
 """
-    I am currently attempting to take a stringvar and convert it to a int value.
-I a doing this so that I can create a function that will compare the user's alarm time
-to the current time so that I may display a popup when the alarm is finished.
-
-    Ok, so it appears that it is making the comparison of the variables correctly, but it 
-is not displalying the popup window. So I believe that the next issue that I need to work on
-is fixing the pop up window.
-
-I am not sure if I am going to make it a seperate function then call it in the alarmclock function.
-Or just program directly into the alarmclock function.
+    The compare time function is comparing the alarm and time_var variables.
+This is functioning properly. In theory all that I have left is to get the if 
+statement to trigger a pop up window that will alert the user.
 """
 update_time()
 
 root.mainloop()
 
-#This is taking the stringvar and converting it back to a string.
-#idk if its recogonizing the get function.
-
-newAlarm = alarm.get()
-alarmNoColon = newAlarm.replace(":", "")
-
-print(alarmNoColon)
-
-myTimeVar = time_var.get()
-noColon = myTimeVar.replace(":", "")
-
-print(noColon)
-
-if alarmNoColon == noColon:
-    print("The values are the same.")
-
-else:
-    print("The values are not the same.")
+compareTime()
