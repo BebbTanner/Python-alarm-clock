@@ -10,11 +10,11 @@ import time
 from tkinter import *
 from tkinter import ttk
 from datetime import datetime
+from tkinter import messagebox
 
 """
     This is the current function that I am working on. 
 """
-def alertWindow():
 
 
 def update_time():
@@ -42,7 +42,7 @@ def compareTime():
     noColon = myTimeVar.replace(":", "")
 
     if alarmNoColon == noColon:
-        print("The values are the same.")
+        messagebox.showwarning("Error", "Your're smelly")
 
 
 root = Tk()
