@@ -78,5 +78,3 @@ statement to trigger a pop up window that will alert the user.
 update_time()
 
 root.mainloop()
-
-compareTime()
