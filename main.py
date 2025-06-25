@@ -46,6 +46,9 @@ time_var        current_alarm
 2.) Comapare the 2 values
 
     Update: this shit does not appear to comaparing the times. I am not sure as to why.
+
+    So it appears that it has to do with the way the variables are stored or the way the function is called.
+
 """
 def alarmClock():
     clockValue = currentAlarm.get()
@@ -94,20 +97,14 @@ is fixing the pop up window.
 I am not sure if I am going to make it a seperate function then call it in the alarmclock function.
 Or just program directly into the alarmclock function.
 """
-#userAlarm = input("Please enter a time: ")
-#alarmNoColon = userAlarm.replace(":", "")
-
-#print(alarmNoColon)
-#print(type(alarmNoColon))
-
-#myTimeVar = "15:00"
-#noColon = myTimeVar.replace(":", "")
-
-#print(noColon)
-#print(type(noColon))
-
-#if alarmNoColon == noColon:
-#    print("The values are the same.")
-
 update_time()
+
 root.mainloop()
+
+alarmNoColon = currentAlarm.replace(":", "")
+
+myTimeVar = time_var.get()
+noColon = myTimeVar.replace(":", "")
+
+if alarmNoColon == noColon:
+    print("The values are the same.")
