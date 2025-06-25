@@ -1,5 +1,8 @@
 """
 Alarm clock mini project June 19th 2025 10:44
+
+Up next:
+    Figure out how to get my compare time function to trigger in the runtime.
 """
 
 import time
@@ -7,11 +10,6 @@ from tkinter import *
 from tkinter import ttk
 from datetime import datetime
 from tkinter import messagebox
-
-"""
-    This is the current function that I am working on. 
-"""
-
 
 def update_time():
     current_time = datetime.now().strftime("%H:%M")
