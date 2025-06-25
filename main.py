@@ -44,6 +44,8 @@ time_var        current_alarm
 
 1.) Remove the colons from both of the values
 2.) Comapare the 2 values
+
+    Update: this shit does not appear to comaparing the times. I am not sure as to why.
 """
 def alarmClock():
     clockValue = currentAlarm.get()
@@ -53,9 +55,7 @@ def alarmClock():
     strValue = timeValue.replace(":", "")
 
     if strAlarm == strValue:
-        new_window = Toplevel(root)
-        new_window.title("Alert")
-        new_window.geometry("300x200")
+        print("They are the same.")
 
 root = Tk()
 root.title("Alarm Clock")
