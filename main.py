@@ -27,17 +27,6 @@ def setAlarm(*args):
     except ValueError:
         pass
 
-def popUpWindow():
-    new_window = Toplevel(root)
-    new_window.title("Alert")
-    new_window.geometry("300x200")
-
-    label = ttk.Label(new_window, text="Time is up!")
-    label.pack(pady=20)
-
-    close_button = ttk.Button(new_window, text="Close", command=new_window.destroy)
-    close_button.pack(pady=10)
-
 """
 The 2 comparsion values are:
 time_var        current_alarm
@@ -45,9 +34,7 @@ time_var        current_alarm
 1.) Remove the colons from both of the values
 2.) Comapare the 2 values
 
-    Update: this shit does not appear to comaparing the times. I am not sure as to why.
-
-    So it appears that it has to do with the way the variables are stored or the way the function is called.
+Update: StringVar object ahs not attribute "replace".
 
 """
 def alarmClock():
