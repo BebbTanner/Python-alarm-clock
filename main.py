@@ -2,10 +2,7 @@
 Alarm clock mini project June 19th 2025 10:44
 
 CURRENT OBJECTIVE:
-Create the alarm function
-    the function should have access to the currentAlarm variable
-    It should then take currentAlarm variable and compare it to the time_var
-    If the values match, display a pop up that says alarm finished or something, maybe include and audio file that goes off.
+Run a check to be sure that the alarm clock function is triggering when the times values are the same.
 
 """
 
