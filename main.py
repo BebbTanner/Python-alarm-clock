@@ -12,7 +12,6 @@ from tkinter import ttk
 from datetime import datetime
 
 def update_time():
-    """Updates the time displayed in the label and reschedules itself."""
     current_time = datetime.now().strftime("%H:%M")
     time_var.set(current_time)
     root.after(60000, update_time)
@@ -23,29 +22,11 @@ def setAlarm(*args):
     try:
         alarmTime = alarm.get()
         currentAlarm.set(alarmTime)
+
+        return currentAlarm
         
     except ValueError:
         pass
-
-"""
-The 2 comparsion values are:
-time_var        current_alarm
-
-1.) Remove the colons from both of the values
-2.) Comapare the 2 values
-
-Update: StringVar object ahs not attribute "replace".
-
-"""
-def alarmClock():
-    clockValue = currentAlarm.get()
-    timeValue = time_var.get()
-
-    strAlarm = clockValue.replace(":", "")
-    strValue = timeValue.replace(":", "")
-
-    if strAlarm == strValue:
-        print("They are the same.")
 
 root = Tk()
 root.title("Alarm Clock")
@@ -88,10 +69,21 @@ update_time()
 
 root.mainloop()
 
-alarmNoColon = currentAlarm.replace(":", "")
+#This is taking the stringvar and converting it back to a string.
+#idk if its recogonizing the get function.
+
+newAlarm = alarm.get()
+alarmNoColon = newAlarm.replace(":", "")
+
+print(alarmNoColon)
 
 myTimeVar = time_var.get()
 noColon = myTimeVar.replace(":", "")
 
+print(noColon)
+
 if alarmNoColon == noColon:
     print("The values are the same.")
+
+else:
+    print("The values are not the same.")
