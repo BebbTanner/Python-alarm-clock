@@ -2,10 +2,7 @@
 Alarm clock mini project June 19th 2025 10:44
 
 CURRENT OBJECTIVE:
-Create the alarm function
-    the function should have access to the currentAlarm variable
-    It should then take currentAlarm variable and compare it to the time_var
-    If the values match, display a pop up that says alarm finished or something, maybe include and audio file that goes off.
+Run a check to be sure that the alarm clock function is triggering when the times values are the same.
 
 """
 
@@ -15,41 +12,31 @@ from tkinter import ttk
 from datetime import datetime
 
 def update_time():
-    """Updates the time displayed in the label and reschedules itself."""
     current_time = datetime.now().strftime("%H:%M")
     time_var.set(current_time)
     root.after(60000, update_time)
+
+    return time_var
 
 def setAlarm(*args):
     try:
         alarmTime = alarm.get()
         currentAlarm.set(alarmTime)
+
+        return currentAlarm
         
     except ValueError:
         pass
 
-def popUpWindow():
-    new_window = Toplevel(root)
-    new_window.title("Alarm finished")
-    new_window.geometry("300x200")
+def compareTime():
+    newAlarm = alarm.get()
+    alarmNoColon = newAlarm.replace(":", "")
 
-    label = ttk.Label(new_window, text="This is a new window!")
-    label.pack(pady=20)
+    myTimeVar = time_var.get()
+    noColon = myTimeVar.replace(":", "")
 
-    close_button = ttk.Button(new_window, text="Close", command=new_window.destroy)
-    close_button.pack(pady=10)
-
-"""
-    the currentAlarm and currentTime variables are now both stored as string variables. So they can now both
-be comapred to each other...in theory.
-
-if currentAlarm == currentTime{
-    display pop up window.
-}
-"""
-def checkAlarm():
-    if {currentAlarm} == {time_var}:
-        popUpWindow()
+    if alarmNoColon == noColon:
+        print("The values are the same.")
 
 
 root = Tk()
@@ -77,6 +64,13 @@ ttk.Label(mainframe, text= " CST ").grid(column=3, row=3, sticky=E)
 for child in mainframe.winfo_children(): 
     child.grid_configure(padx=10, pady=10)
 
+"""
+    The compare time function is comparing the alarm and time_var variables.
+This is functioning properly. In theory all that I have left is to get the if 
+statement to trigger a pop up window that will alert the user.
+"""
 update_time()
 
 root.mainloop()
+
+compareTime()
