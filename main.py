@@ -1,15 +1,15 @@
 """
 Alarm clock mini project June 19th 2025 10:44
 
-CURRENT OBJECTIVE:
-Run a check to be sure that the alarm clock function is triggering when the times values are the same.
-
+Up next:
+    Figure out how to get my compare time function to trigger in the runtime.
 """
 
 import time
 from tkinter import *
 from tkinter import ttk
 from datetime import datetime
+from tkinter import messagebox
 
 def update_time():
     current_time = datetime.now().strftime("%H:%M")
@@ -36,7 +36,7 @@ def compareTime():
     noColon = myTimeVar.replace(":", "")
 
     if alarmNoColon == noColon:
-        print("The values are the same.")
+        messagebox.showwarning("Error", "Your're smelly")
 
 
 root = Tk()
@@ -64,13 +64,6 @@ ttk.Label(mainframe, text= " CST ").grid(column=3, row=3, sticky=E)
 for child in mainframe.winfo_children(): 
     child.grid_configure(padx=10, pady=10)
 
-"""
-    The compare time function is comparing the alarm and time_var variables.
-This is functioning properly. In theory all that I have left is to get the if 
-statement to trigger a pop up window that will alert the user.
-"""
 update_time()
 
 root.mainloop()
-
-compareTime()
