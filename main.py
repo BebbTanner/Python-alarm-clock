@@ -24,6 +24,7 @@ def set_alarm():
     # Get alarm time from user input
     alarm_time_str = entry_time.get()
     try:
+        #This a variable that is getting the current time using the datetime library.
         alarm_time = datetime.datetime.strptime(alarm_time_str, "%H:%M").time()
         # Check if the time is in the future
         if alarm_time < datetime.datetime.now().time():
@@ -37,10 +38,12 @@ def set_alarm():
 
 
 def setAlarm(*args):
-    try:
-        alarmTime = alarm.get()
-        currentAlarm.set(alarmTime)
+    #This is a variable declaration that is using .get() to get the value stored
+    #in the alarm variable.
+    alarmTime = alarm.get()
 
+    try:
+        currentAlarm.set(alarmTime)
         return currentAlarm
         
     except ValueError:
