@@ -8,6 +8,10 @@ label outside of the function I will try to use a label inside the update time f
 that should properly display the updated current time to the window without having to jump 
 through all these damn hoops.
 
+    So, I think I am going to restart on the setAlarm function. The way I see it is that,
+the example declares the variables outside of the functions. Then inside the functions 
+they get the values stored in the variables. Finally, the most important part here, they
+create the labels to be displayed in the window rather than outside of the function.
 
 """
 
@@ -63,7 +67,7 @@ def set_alarm():
 def setAlarm(*args):
     #This is a variable declaration that is using .get() to get the value stored
     #in the alarm variable.
-    alarmTime = alarm.get()
+    alarmTime = alarmEntry.get()
 
     try:
         currentAlarm.set(alarmTime)
@@ -113,6 +117,13 @@ mainframe = tk.Frame(root, padding="3 3 12 12")
 mainframe.grid(column=0, row=0, sticky=(N, W, E, S))
 root.columnconfigure(0, weight=1)
 root.rowconfigure(0, weight=1)
+
+"""
+    alarmEntry is defined as the tk.entry widget using the root as parameters.
+This should create a child inside of the root. This is the variable that will be
+used in my setAlarm function.
+"""
+alarmEntry = tk.Entry(root)
 
 """Example line"""
 label_time = tk.Label(root, text="Enter alarm time (HH:MM):")
