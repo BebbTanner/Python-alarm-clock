@@ -5,11 +5,10 @@ Up next:
     Figure out how to get my compare time function to trigger in the runtime.
 """
 
-import time
-from tkinter import *
-from tkinter import ttk
-from datetime import datetime
+import tkinter as tk
 from tkinter import messagebox
+import datetime
+import time
 
 def update_time():
     current_time = datetime.now().strftime("%H:%M")
@@ -17,6 +16,24 @@ def update_time():
     root.after(60000, update_time)
 
     return time_var
+
+"""
+    This is an example that I found online. I am going to compare this function with my function.
+"""
+def set_alarm():
+    # Get alarm time from user input
+    alarm_time_str = entry_time.get()
+    try:
+        alarm_time = datetime.datetime.strptime(alarm_time_str, "%H:%M").time()
+        # Check if the time is in the future
+        if alarm_time < datetime.datetime.now().time():
+             messagebox.showerror("Error", "Alarm time must be in the future")
+             return
+        label_alarm.config(text=f"Alarm set for: {alarm_time_str}")
+        check_alarm(alarm_time) # Start checking the alarm time
+    except ValueError:
+         messagebox.showerror("Error", "Invalid time format. Use HH:MM")
+
 
 def setAlarm(*args):
     try:
@@ -65,5 +82,37 @@ for child in mainframe.winfo_children():
     child.grid_configure(padx=10, pady=10)
 
 update_time()
+
+root.mainloop()
+
+"""
+    Example that I found online. I am going to compare it to mine to try and figure out where I am going wrong.
+I want to clarify that I am using this for learning purposes.
+"""
+
+def check_alarm(alarm_time):
+    current_time = datetime.datetime.now().time()
+    if (current_time.hour, current_time.minute) == (alarm_time.hour, alarm_time.minute):
+         # Trigger the alarm (play sound, display message)
+         messagebox.showinfo("Alarm", "Time to wake up!")
+
+    else:
+        # Check again after a delay (e.g., 1 minute)
+        root.after(60000, check_alarm, alarm_time) # 60000 milliseconds = 1 minute
+
+root = tk.Tk()
+root.title("Alarm Clock")
+
+label_time = tk.Label(root, text="Enter alarm time (HH:MM):")
+label_time.pack()
+
+entry_time = tk.Entry(root)
+entry_time.pack()
+
+button_set = tk.Button(root, text="Set Alarm", command=set_alarm)
+button_set.pack()
+
+label_alarm = tk.Label(root, text="")
+label_alarm.pack()
 
 root.mainloop()
