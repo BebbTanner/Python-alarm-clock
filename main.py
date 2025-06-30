@@ -7,6 +7,8 @@ at the example I might beable to set my function up to display it. So, rather th
 label outside of the function I will try to use a label inside the update time function then
 that should properly display the updated current time to the window without having to jump 
 through all these damn hoops.
+
+
 """
 
 """
@@ -144,4 +146,8 @@ and applying a 10px padding.
 for child in mainframe.winfo_children(): 
     child.grid_configure(padx=10, pady=10)
 
+"""
+    This is calling the mainloop function. This should compile everything used for 
+the main loop.
+"""
 root.mainloop()
