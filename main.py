@@ -1,8 +1,7 @@
 """
 Alarm clock mini project June 19th 2025 10:44
 
-Up next:
-    Figure out how to get my compare time function to trigger in the runtime.
+    I have added an example from online that works to try and figure out where I went wrong.
 """
 
 import tkinter as tk
@@ -10,16 +9,17 @@ from tkinter import messagebox
 import datetime
 import time
 
+"""
 def update_time():
     current_time = datetime.now().strftime("%H:%M")
     time_var.set(current_time)
     root.after(60000, update_time)
 
     return time_var
+"""
 
-"""
-    This is an example that I found online. I am going to compare this function with my function.
-"""
+
+"""Example line"""
 def set_alarm():
     # Get alarm time from user input
     alarm_time_str = entry_time.get()
@@ -33,6 +33,7 @@ def set_alarm():
         check_alarm(alarm_time) # Start checking the alarm time
     except ValueError:
          messagebox.showerror("Error", "Invalid time format. Use HH:MM")
+"""END"""
 
 
 def setAlarm(*args):
@@ -45,6 +46,19 @@ def setAlarm(*args):
     except ValueError:
         pass
 
+
+"""Example line"""
+def check_alarm(alarm_time):
+    current_time = datetime.datetime.now().time()
+    if (current_time.hour, current_time.minute) == (alarm_time.hour, alarm_time.minute):
+         # Trigger the alarm (play sound, display message)
+         messagebox.showinfo("Alarm", "Time to wake up!")
+
+    else:
+        # Check again after a delay (e.g., 1 minute)
+        root.after(60000, check_alarm, alarm_time) # 60000 milliseconds = 1 minute
+"""END"""
+
 def compareTime():
     newAlarm = alarm.get()
     alarmNoColon = newAlarm.replace(":", "")
@@ -56,8 +70,14 @@ def compareTime():
         messagebox.showwarning("Error", "Your're smelly")
 
 
+"""Example line"""
+root = tk.Tk()
+root.title("Alarm Clock")
+"""END"""
+
 root = Tk()
 root.title("Alarm Clock")
+
 
 mainframe = ttk.Frame(root, padding="3 3 12 12")
 mainframe.grid(column=0, row=0, sticky=(N, W, E, S))
@@ -68,6 +88,21 @@ alarm = StringVar()
 time_var = StringVar()
 currentAlarm = StringVar()
 alarm_entry = ttk.Entry(mainframe, width=7, textvariable=alarm)
+
+
+"""Example line"""
+label_time = tk.Label(root, text="Enter alarm time (HH:MM):")
+label_time.pack()
+
+entry_time = tk.Entry(root)
+entry_time.pack()
+
+button_set = tk.Button(root, text="Set Alarm", command=set_alarm)
+button_set.pack()
+
+label_alarm = tk.Label(root, text="")
+label_alarm.pack()
+"""END"""
 
 ttk.Label(mainframe, text="What time?").grid(column=1, row=1, sticky=W)
 ttk.Label(mainframe, text= " Alarm set for: ").grid(column=1, row=2, sticky=E)
@@ -80,39 +115,5 @@ ttk.Label(mainframe, text= " CST ").grid(column=3, row=3, sticky=E)
 
 for child in mainframe.winfo_children(): 
     child.grid_configure(padx=10, pady=10)
-
-update_time()
-
-root.mainloop()
-
-"""
-    Example that I found online. I am going to compare it to mine to try and figure out where I am going wrong.
-I want to clarify that I am using this for learning purposes.
-"""
-
-def check_alarm(alarm_time):
-    current_time = datetime.datetime.now().time()
-    if (current_time.hour, current_time.minute) == (alarm_time.hour, alarm_time.minute):
-         # Trigger the alarm (play sound, display message)
-         messagebox.showinfo("Alarm", "Time to wake up!")
-
-    else:
-        # Check again after a delay (e.g., 1 minute)
-        root.after(60000, check_alarm, alarm_time) # 60000 milliseconds = 1 minute
-
-root = tk.Tk()
-root.title("Alarm Clock")
-
-label_time = tk.Label(root, text="Enter alarm time (HH:MM):")
-label_time.pack()
-
-entry_time = tk.Entry(root)
-entry_time.pack()
-
-button_set = tk.Button(root, text="Set Alarm", command=set_alarm)
-button_set.pack()
-
-label_alarm = tk.Label(root, text="")
-label_alarm.pack()
 
 root.mainloop()
