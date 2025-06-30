@@ -137,6 +137,10 @@ label_alarm = tk.Label(root, text="")
 label_alarm.pack()
 """END"""
 
+"""
+    This is a for loop that will check for all of the children in the parent window
+and applying a 10px padding.
+"""
 for child in mainframe.winfo_children(): 
     child.grid_configure(padx=10, pady=10)
 
