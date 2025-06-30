@@ -124,6 +124,12 @@ via a entry box. In the parameters they use root, this is taking the entry and d
 on the parent window.
 """
 entry_time = tk.Entry(root)
+
+"""
+    The pack() widget is away to arrange the main window. This is being used on the 
+previously declared variable entry_time. I dont know how pack works excatly, but 
+I know that I was using a grid format.
+"""
 entry_time.pack()
 
 button_set = tk.Button(root, text="Set Alarm", command=set_alarm)
