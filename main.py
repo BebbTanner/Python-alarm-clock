@@ -107,16 +107,10 @@ root = tk.Tk()
 root.title("Alarm Clock")
 
 
-mainframe = ttk.Frame(root, padding="3 3 12 12")
+mainframe = tk.Frame(root, padding="3 3 12 12")
 mainframe.grid(column=0, row=0, sticky=(N, W, E, S))
 root.columnconfigure(0, weight=1)
 root.rowconfigure(0, weight=1)
-
-alarm = StringVar()
-time_var = StringVar()
-currentAlarm = StringVar()
-alarm_entry = ttk.Entry(mainframe, width=7, textvariable=alarm)
-
 
 """Example line"""
 label_time = tk.Label(root, text="Enter alarm time (HH:MM):")
