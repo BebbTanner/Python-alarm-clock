@@ -64,17 +64,12 @@ def set_alarm():
 """END"""
 
 
-def setAlarm(*args):
+def setAlarm():
     #This is a variable declaration that is using .get() to get the value stored
     #in the alarm variable.
     alarmTime = alarmEntry.get()
 
-    try:
-        currentAlarm.set(alarmTime)
-        return currentAlarm
-        
-    except ValueError:
-        pass
+    
 
 
 """Example line"""
