@@ -143,15 +143,6 @@ label_alarm = tk.Label(root, text="")
 label_alarm.pack()
 """END"""
 
-ttk.Label(mainframe, text="What time?").grid(column=1, row=1, sticky=W)
-ttk.Label(mainframe, text= " Alarm set for: ").grid(column=1, row=2, sticky=E)
-ttk.Label(mainframe, text= " Current time: ").grid(column=1, row=3, sticky=E)
-alarm_entry.grid(column=2, row=1, sticky=(W, E))
-ttk.Label(mainframe, textvariable=currentAlarm).grid(column=2, row=2, sticky=E)
-ttk.Label(mainframe, textvariable=time_var).grid(column=2, row=3, sticky=E)
-ttk.Button(mainframe, text="Set Alarm", command=setAlarm).grid(column=3, row=1, sticky=W)
-ttk.Label(mainframe, text= " CST ").grid(column=3, row=3, sticky=E)
-
 for child in mainframe.winfo_children(): 
     child.grid_configure(padx=10, pady=10)
 
