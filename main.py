@@ -29,39 +29,23 @@ from tkinter import messagebox
 import datetime
 import time
 
-"""Example line"""
-def set_alarm():
-    # Get alarm time from user input
-    alarm_time_str = entry_time.get()
+def setAlarm():
+    alarmTimeString = alarmEntry.get()
+
     try:
-        #This a variable that is getting the current time using the datetime library.
-        alarm_time = datetime.datetime.strptime(alarm_time_str, "%H:%M").time()
+        alarmTime = datetime.datetime.strptime(alarmTimeString, "%H:%M").time()
 
-        # If the alarm time value is less than the current time, Throw a message that 
-        # tells the user that the alarm time must be in the future.
-        if alarm_time < datetime.datetime.now().time():
-             messagebox.showerror("Error", "Alarm time must be in the future")
-             return
+        if alarmTime < datetime.datetime.now().time():
+            messagebox.showerror("Error", "Time must be in the future!")
+            return
         
-        """
-            So in this example, rather than declaring the label outside of the function,
-        it is instead putting the label in the function. This label will display the 
-        value stored in alarm_time_str. This label will then be displayed to the window.
-        """
-        label_alarm.config(text=f"Alarm set for: {alarm_time_str}")
-        """
-            This is calling the check_alarm function and uses the alarm_time variable 
-        for the parameters. Check_alarm will be explained in that fuction.
-        """
-        check_alarm(alarm_time)
+        label_alarm.config(text=f"Alarm set for: {alarmEntry}")
 
-        """
-            This is an exception that will inform the user that the did not use
-        a proper format.
-        """
+        setAlarm(alarmTime)
+
     except ValueError:
-         messagebox.showerror("Error", "Invalid time format. Use HH:MM")
-"""END"""
+        messagebox.showerror("Error", "Incorrect format!")
+
 
 """
     The setAlarm function is allowing the user to set a time to wake up to.
@@ -87,49 +71,14 @@ def checkAlarm(alarmEntry):
 root = tk.Tk()
 root.title("Alarm Clock")
 
-mainframe = tk.Frame(root, padding="3 3 12 12")
-mainframe.grid(column=0, row=0, sticky=(N, W, E, S))
-root.columnconfigure(0, weight=1)
-root.rowconfigure(0, weight=1)
-
-"""
-    alarmEntry is defined as the tk.entry widget using the root as parameters.
-This should create a child inside of the root. This is the variable that will be
-used in my setAlarm function.
-"""
 alarmEntry = tk.Entry(root)
+alarmEntry.pack()
 
-"""Example line"""
-label_time = tk.Label(root, text="Enter alarm time (HH:MM):")
-label_time.pack()
-
-"""
-    This is the entry time variable. This is using the Entry widget to accept user input
-via a entry box. In the parameters they use root, this is taking the entry and displaying it 
-on the parent window.
-"""
-entry_time = tk.Entry(root)
-
-"""
-    The pack() widget is away to arrange the main window. This is being used on the 
-previously declared variable entry_time. I dont know how pack works excatly, but 
-I know that I was using a grid format.
-"""
-entry_time.pack()
-
-button_set = tk.Button(root, text="Set Alarm", command=set_alarm)
-button_set.pack()
+alarmSet = tk.Button(root, text="Set Alarm", command=setAlarm)
+alarmSet.pack()
 
 label_alarm = tk.Label(root, text="")
 label_alarm.pack()
-"""END"""
-
-"""
-    This is a for loop that will check for all of the children in the parent window
-and applying a 10px padding.
-"""
-for child in mainframe.winfo_children(): 
-    child.grid_configure(padx=10, pady=10)
 
 """
     This is calling the mainloop function. This should compile everything used for 
