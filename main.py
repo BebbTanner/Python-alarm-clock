@@ -9,11 +9,6 @@ that should properly display the updated current time to the window without havi
 through all these damn hoops.
 """
 
-import tkinter as tk
-from tkinter import messagebox
-import datetime
-import time
-
 """
 def update_time():
     current_time = datetime.now().strftime("%H:%M")
@@ -23,6 +18,10 @@ def update_time():
     return time_var
 """
 
+import tkinter as tk
+from tkinter import messagebox
+import datetime
+import time
 
 """Example line"""
 def set_alarm():
@@ -119,6 +118,11 @@ alarm_entry = ttk.Entry(mainframe, width=7, textvariable=alarm)
 label_time = tk.Label(root, text="Enter alarm time (HH:MM):")
 label_time.pack()
 
+"""
+    This is the entry time variable. This is using the Entry widget to accept user input
+via a entry box. In the parameters they use root, this is taking the entry and displaying it 
+on the parent window.
+"""
 entry_time = tk.Entry(root)
 entry_time.pack()
 
