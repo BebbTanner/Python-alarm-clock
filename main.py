@@ -69,7 +69,15 @@ def setAlarm():
     #in the alarm variable.
     alarmTime = alarmEntry.get()
 
-    
+    try:
+        """
+            The currentTime varible uses the datetime library to get the current time.
+        The current time is the value that is stored in this variable.
+        """
+        currentTime = datetime.datetime.strptime("%H:%M").time()
+        
+    except ValueError:
+
 
 
 """Example line"""
