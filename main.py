@@ -20,19 +20,17 @@ next thing I want to do is try and display the current updated time on the windo
 I can achieve this by using the technique that the example used.
 """
 
-"""
-def update_time():
-    current_time = datetime.now().strftime("%H:%M")
-    time_var.set(current_time)
-    root.after(60000, update_time)
-
-    return time_var
-"""
-
 import tkinter as tk
 from tkinter import messagebox
 import datetime
 import time
+
+def updateTime():
+    currentTime = datetime.datetime.strptime("%H:%M").time()
+    
+    root.after(60000, updateTime)
+
+    labelCurrentTime.config(text=f"Current Time: {currentTime}")
 
 def setAlarm():
     alarmTimeString = alarmEntry.get()
@@ -84,6 +82,9 @@ alarmSet.pack()
 
 label_alarm = tk.Label(root, text="")
 label_alarm.pack()
+
+labelCurrentTime = tk.Label(root, text="")
+labelCurrentTime.pack()
 
 """
     This is calling the mainloop function. This should compile everything used for 
