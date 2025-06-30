@@ -26,12 +26,29 @@ def set_alarm():
     try:
         #This a variable that is getting the current time using the datetime library.
         alarm_time = datetime.datetime.strptime(alarm_time_str, "%H:%M").time()
-        # Check if the time is in the future
+
+        # If the alarm time value is less than the current time, Throw a message that 
+        # tells the user that the alarm time must be in the future.
         if alarm_time < datetime.datetime.now().time():
              messagebox.showerror("Error", "Alarm time must be in the future")
              return
+        
+        """
+            So in this example, rather than declaring the label outside of the function,
+        it is instead putting the label in the function. This label will display the 
+        value stored in alarm_time_str. This label will then be displayed to the window.
+        """
         label_alarm.config(text=f"Alarm set for: {alarm_time_str}")
-        check_alarm(alarm_time) # Start checking the alarm time
+        """
+            This is calling the check_alarm function and uses the alarm_time variable 
+        for the parameters. Check_alarm will be explained in that fuction.
+        """
+        check_alarm(alarm_time)
+
+        """
+            This is an exception that will inform the user that the did not use
+        a proper format.
+        """
     except ValueError:
          messagebox.showerror("Error", "Invalid time format. Use HH:MM")
 """END"""
