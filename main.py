@@ -2,6 +2,11 @@
 Alarm clock mini project June 19th 2025 10:44
 
     I have added an example from online that works to try and figure out where I went wrong.
+This example does not have a label that will display the current time. However, from looking 
+at the example I might beable to set my function up to display it. So, rather than using a 
+label outside of the function I will try to use a label inside the update time function then
+that should properly display the updated current time to the window without having to jump 
+through all these damn hoops.
 """
 
 import tkinter as tk
