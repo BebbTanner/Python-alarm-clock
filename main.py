@@ -103,13 +103,7 @@ def compareTime():
     if alarmNoColon == noColon:
         messagebox.showwarning("Error", "Your're smelly")
 
-
-"""Example line"""
 root = tk.Tk()
-root.title("Alarm Clock")
-"""END"""
-
-root = Tk()
 root.title("Alarm Clock")
 
 
