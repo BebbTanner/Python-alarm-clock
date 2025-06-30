@@ -73,9 +73,19 @@ def setAlarm(*args):
 
 """Example line"""
 def check_alarm(alarm_time):
+    """
+        This is the current_time variable. Using the datetime library, they are storing the 
+    current date and time.
+    """
     current_time = datetime.datetime.now().time()
+
+    """
+        if the current time hour and current time minute are both equal to the alarm time hour
+    and alarm time minute then run the loop. If the times do not match, then run the function
+    again.
+    """
     if (current_time.hour, current_time.minute) == (alarm_time.hour, alarm_time.minute):
-         # Trigger the alarm (play sound, display message)
+         # If the condition of the loop are met, this will display a message box.
          messagebox.showinfo("Alarm", "Time to wake up!")
 
     else:
