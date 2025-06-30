@@ -13,6 +13,11 @@ the example declares the variables outside of the functions. Then inside the fun
 they get the values stored in the variables. Finally, the most important part here, they
 create the labels to be displayed in the window rather than outside of the function.
 
+
+    Ok, everything seems to be working properly. I just want to change the layout of the window,
+I might try and go back the the grid format, not really sure right now. I do know that the 
+next thing I want to do is try and display the current updated time on the window. I think 
+I can achieve this by using the technique that the example used.
 """
 
 """
