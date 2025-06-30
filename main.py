@@ -63,58 +63,29 @@ def set_alarm():
          messagebox.showerror("Error", "Invalid time format. Use HH:MM")
 """END"""
 
-
-def setAlarm():
-    #This is a variable declaration that is using .get() to get the value stored
-    #in the alarm variable.
-    alarmTime = alarmEntry.get()
-
-    try:
-        """
-            The currentTime varible uses the datetime library to get the current time.
-        The current time is the value that is stored in this variable.
-        """
-        currentTime = datetime.datetime.strptime("%H:%M").time()
-        
-    except ValueError:
-
-
-
-"""Example line"""
-def check_alarm(alarm_time):
+"""
+    The setAlarm function is allowing the user to set a time to wake up to.
+This is using the alarmEntry as the parameters.
+"""
+def checkAlarm(alarmEntry):
     """
-        This is the current_time variable. Using the datetime library, they are storing the 
-    current date and time.
+        The currentTime varible uses the datetime library to get the current time.
+    The current time is the value that is stored in this variable.
     """
-    current_time = datetime.datetime.now().time()
+    currentTime = datetime.datetime.strptime("%H:%M").time()
 
     """
-        if the current time hour and current time minute are both equal to the alarm time hour
-    and alarm time minute then run the loop. If the times do not match, then run the function
-    again.
+        If statement
     """
-    if (current_time.hour, current_time.minute) == (alarm_time.hour, alarm_time.minute):
-         # If the condition of the loop are met, this will display a message box.
-         messagebox.showinfo("Alarm", "Time to wake up!")
+    if (alarmEntry.hour and alarmEntry.minute) == (currentTime.hour and currentTime.minute):
+        messagebox.showwarning("Alarm", "Time to get up!")
 
     else:
-        # Check again after a delay (e.g., 1 minute)
-        root.after(60000, check_alarm, alarm_time) # 60000 milliseconds = 1 minute
-"""END"""
+        root.after(60000, checkAlarm, alarmEntry)
 
-def compareTime():
-    newAlarm = alarm.get()
-    alarmNoColon = newAlarm.replace(":", "")
-
-    myTimeVar = time_var.get()
-    noColon = myTimeVar.replace(":", "")
-
-    if alarmNoColon == noColon:
-        messagebox.showwarning("Error", "Your're smelly")
 
 root = tk.Tk()
 root.title("Alarm Clock")
-
 
 mainframe = tk.Frame(root, padding="3 3 12 12")
 mainframe.grid(column=0, row=0, sticky=(N, W, E, S))
